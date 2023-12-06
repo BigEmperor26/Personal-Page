@@ -55,7 +55,7 @@ function Projects(githubsource:string) {
   
   return (
   <Container>
-  <p className="h2 mt-5"  href="#projects">Projects</p>
+  <p className="h2 mt-5"  >Projects</p>
   <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className='card-deck'>
 
     <Col className='my-3'>
@@ -168,7 +168,7 @@ function NavBar(imagelogo:string) {
 }
 function Publications() {
   return (<Container >
-    <p className="h2 mt-5" href="#publications">Publications</p>
+    <p className="h2 mt-5" >Publications</p>
     <Row className='card-deck'>
 
       <Col className='my-3'>
@@ -232,7 +232,7 @@ function ContactMe(githubsource:string) {
   // }
   return (
     <Container>
-    <p className="h2 mt-5" href="#contactme">Contact Me</p>
+    <p className="h2 mt-5"  >Contact Me</p>
     <Row className='card-deck'>
         
         <Col className='my-3'>
