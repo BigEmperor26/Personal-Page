@@ -5,51 +5,15 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Carousel from 'react-bootstrap/Carousel';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-import Stack from 'react-bootstrap/Stack';
-import Link from 'next/link'
 import Script from 'next/script';
-import { useEffect, useState, useReducer, use } from 'react';
-import { ThemeProvider, useTheme } from 'next-themes'
-import { get } from 'http';
-import { on } from 'events';
+import { useState , useEffect} from 'react';
 
 
 
-
-function MyCarousel() {
-  return (
-    <Carousel>
-      <Carousel.Item interval={1000}>
-      <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/1024px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg" rounded fluid/>
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item interval={500}>
-      <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/1024px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg" rounded fluid/>
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-      <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/1024px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg" rounded fluid/>
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-  );
-}
 
 function Projects(githubsource:string) {
   
@@ -70,17 +34,6 @@ function Projects(githubsource:string) {
       </Card>
     </Col>
 
-    {/* <Col className='my-3'>
-      <Card className="mx-auto m-3 h-100">
-        <Card.Body>
-          <Card.Title>Let's Give a Voice to Conversational Agents in Virtual Reality</Card.Title>
-          <Card.Text>
-            Use of local speech recognition and synthesis for conversational agents in VR in Unity
-          </Card.Text>
-        </Card.Body>
-        <Button variant="outline-info" className='mt-auto m-3' href='https://github.com/sislab-unitn/Let-s-Give-a-Voice-to-Conversational-Agents-in-VR' ><Image src={githubsource} rounded height="25px" /> GitHub</Button>
-      </Card>
-    </Col> */}
 
 
     
@@ -156,9 +109,6 @@ function NavBar(imagelogo:string) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          {/* <Nav.Link href="#projects">Projects</Nav.Link> */}
-          {/* <Nav.Link href="#publications">Publications</Nav.Link> */}
-          {/* <Nav.Link href="#contactme">Contact Me</Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
       <Navbar.Brand id="btnSwitch" >  <Image src={imagelogo} height={30}></Image></Navbar.Brand>
@@ -191,45 +141,6 @@ function Publications() {
   }
 
 function ContactMe(githubsource:string) {
-  // const getStoredTheme = () => localStorage.getItem('theme')
-
-  // const getPreferredTheme = () => {
-  //   const storedTheme = getStoredTheme()
-  //   if (storedTheme) {
-  //     return storedTheme
-  //   }
-
-  //   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  // }
-  // const theme = getPreferredTheme()
-  // if (theme == 'dark') {
-  //   // setFirstName('Dark')
-  //   // setImageLogo(<Image src="Light mode.png" height={30}></Image>)
-  //   var githubsourcename = "github-mark/github-mark-white.svg"
-  // }else{
-  //   var githubsourcename = "github-mark/github-mark.svg"
-  // }
-  // const [githubsource,setGithubsource] = useState(githubsourcename)
-  // function changeGithubSource(){
-  //   if (githubsource == "github-mark/github-mark.svg") {
-  //     setGithubsource("github-mark/github-mark-white.svg")
-  //   }else{
-  //     setGithubsource("github-mark/github-mark.svg")
-  //   }
-  // }
-  // const mutationCallback = (mutationsList) => {
-  //   for (const mutation of mutationsList) {
-  //     if (
-  //       // mutation.type !== "attributes" ||
-  //       mutation.attributeName === "data-bs-theme"
-  //     ) {
-  //       // return
-  //       changeGithubSource()
-  //     }
-  //     // console.log('old:', mutation.oldValue)
-  //     // console.log('new:', mutation.target.getAttribute("data-bs-theme"))
-  //   }
-  // }
   return (
     <Container>
     <p className="h2 mt-5"  >Contact Me</p>
@@ -282,63 +193,60 @@ function Footer() {
   );
 }
 function Page() {
+  let githubsourcename = "github-mark/github-mark.svg"
+  let imagelogoname = "light mode.png"
   const getStoredTheme = () => localStorage.getItem('theme')
-
-  const getPreferredTheme = () => {
-    const storedTheme = getStoredTheme()
-    if (storedTheme) {
-      return storedTheme
-    }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  }
-  const theme = getPreferredTheme()
-  if (theme == 'dark') {
-    // setFirstName('Dark')
-    // setImageLogo(<Image src="Light mode.png" height={30}></Image>)
-    var githubsourcename = "github-mark/github-mark-white.svg"
-    var imagelogoname = "dark mode.png"
-    
-  }else{
-    var githubsourcename = "github-mark/github-mark.svg"
-    var imagelogoname = "light mode.png"
-  }
   const [githubsource,setGithubsource] = useState(githubsourcename)
   const [imagelogo,setImagelogo] = useState(imagelogoname)
-  function changeIcons(){
-    if (githubsource == "github-mark/github-mark.svg") {
-      setGithubsource("github-mark/github-mark-white.svg")
-      setImagelogo("dark mode.png")
-    }else{
-      setGithubsource("github-mark/github-mark.svg")
-      setImagelogo("light mode.png")
-    }
-  }
-  const mutationCallback = (mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (
-        // mutation.type !== "attributes" ||
-        mutation.attributeName === "data-bs-theme"
-      ) {
-        // return
-        changeIcons()
+  const getPreferredTheme = () => {
+      const storedTheme = getStoredTheme()
+      if (storedTheme) {
+        return storedTheme
       }
-      // console.log('old:', mutation.oldValue)
-      // console.log('new:', mutation.target.getAttribute("data-bs-theme"))
+
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
-  }
-  const observer = new MutationObserver(mutationCallback)
-  observer.observe(document.documentElement, { attributes: true })
-  // const theme = getPreferredTheme()
-  const navbar = NavBar(imagelogo)
-  const projects = Projects(githubsource)
-  const contactme = ContactMe(githubsource)
+    const theme = getPreferredTheme()
+
+    if (theme === 'dark') {
+      githubsourcename = "github-mark/github-mark-white.svg"
+      imagelogoname = "dark mode.png"
+      
+    }else{
+      githubsourcename = "github-mark/github-mark.svg"
+      imagelogoname = "light mode.png"
+    }
+
+    function changeIcons(){
+      if (githubsource === "github-mark/github-mark.svg") {
+        setGithubsource("github-mark/github-mark-white.svg")
+        setImagelogo("dark mode.png")
+      }else{
+        setGithubsource("github-mark/github-mark.svg")
+        setImagelogo("light mode.png")
+      }
+    }
+    const mutationCallback = (mutationsList:any) => {
+      for (const mutation of mutationsList) {
+        if (
+          mutation.attributeName === "data-bs-theme"
+        ) {
+          // return
+          changeIcons()
+        }
+      }
+    }
+    const observer = new MutationObserver(mutationCallback)
+    observer.observe(document.documentElement, { attributes: true })
+    
+  
+    const navbar = NavBar(imagelogo)
+    const projects = Projects(githubsource)
+    const contactme = ContactMe(githubsource)
   return (
     
     <Container fluid>
       <Script src="bootstrapToggle.js" strategy="lazyOnload"></Script>
-
-      {/* {navBar} */}
       {navbar}
       <Container fluid >
         {projects}
